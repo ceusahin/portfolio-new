@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, type ComponentProps } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Search, ExternalLink, Github, X } from 'lucide-react'
 import { Container, SectionTitle, Card, Button, Tag, Badge, Modal } from '@/components/ui'
@@ -106,7 +106,7 @@ export function Projects() {
                 {t(ui.noResults)}
               </p>
             ) : (
-              filtered.map((project, i) => (
+              filtered.map((project) => (
                 <ProjectCard
                   key={project.id}
                   project={project}
@@ -142,18 +142,20 @@ export function Projects() {
   )
 }
 
+type ViewAnimation = { opacity?: number; y?: number }
+
 function ProjectCard({
   project,
   initial,
   animate,
-  reduced,
+  reduced: _reduced,
   onOpen,
   t,
   ui,
 }: {
   project: Project
-  initial: object
-  animate: object
+  initial: ViewAnimation
+  animate: ViewAnimation
   reduced: boolean
   onOpen: () => void
   t: (x: { tr: string; en: string }) => string
@@ -164,8 +166,8 @@ function ProjectCard({
 
   return (
     <motion.div
-      initial={initial}
-      whileInView={animate}
+      initial={initial as ComponentProps<typeof motion.div>['initial']}
+      whileInView={animate as ComponentProps<typeof motion.div>['whileInView']}
       viewport={{ once: true, margin: '-20px' }}
       className="h-full"
     >

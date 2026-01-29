@@ -17,7 +17,7 @@ function scrollToSection(id: string) {
 }
 
 export function Footer() {
-  const { t, locale } = useI18n()
+  const { t } = useI18n()
   const profile = portfolioData.profile
   const ui = portfolioData.ui
 

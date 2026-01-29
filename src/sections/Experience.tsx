@@ -20,7 +20,7 @@ export function Experience() {
       <Container>
         <SectionTitle title={t(ui.title)} />
         <ul className="space-y-8">
-          {experience.map((item, i) => (
+          {experience.map((item) => (
             <motion.li
               key={item.id}
               initial={initial}
