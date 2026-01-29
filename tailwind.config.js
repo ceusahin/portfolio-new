@@ -31,6 +31,7 @@ export default {
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
       },
+      //a
       keyframes: {
         fadeIn: {
           '0%': { opacity: '0', transform: 'translateY(8px)' },
